@@ -8,6 +8,8 @@ public class chefMovement : MonoBehaviour
     public Rigidbody2D rb;
     Vector2 movem;
     public Animator anim;
+    public GameObject cookPot;
+    
     // Start is called before the first frame update
 
 
@@ -25,5 +27,13 @@ public class chefMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movem * movementSpeed * Time.fixedDeltaTime);
+
+        cookPot = GameObject.Find("cookPot");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, cookPot.transform.position, Mathf.Infinity, LayerMask.GetMask("cookingPot"));
+        if (hit.collider != null)
+        {
+            var pos = Vector2.Distance(transform.position, hit.collider.gameObject.transform.position);
+            print("The Cooking pot is " + pos + " studs from the Chef");
+        }
     }
 }
