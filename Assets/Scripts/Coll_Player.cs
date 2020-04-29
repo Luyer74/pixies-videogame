@@ -13,9 +13,9 @@ public int typeOfFood = 0;
 
 public int time = 0;
 
-void OnCollisionEntered(Collision Collision){
-	string objCollision = Collision.transform.tag; //se puede usar name o tag
-	Debug.Log(Collision.collider.tag);
+void OnCollisionEnter2D(Collision2D col){
+	string objCollision = col.transform.tag; //se puede usar name o tag
+	Debug.Log("Enter");
 	
 	//Si el objeto con el que choca tiene el tag de Mesa y no tiene plato
 	if(objCollision == "Mesa" && !hasPlate){
@@ -26,13 +26,13 @@ void OnCollisionEntered(Collision Collision){
 	 
 		//Si el objeto tiene el tag de Food y tiene plato
 		//Vas al objeto comida (como el cliente que te enseñe) y asignas el tipo de comida que tienes
-		typeOfFood = Collision.gameObject.GetComponent<Comida_Coll>().tipoComida;
+		typeOfFood = col.gameObject.GetComponent<Comida_Coll>().tipoComida;
 		
 	}else if(objCollision == "Cliente" && typeOfFood!=0){ 
 	
 		//Si el objeto con el que choca tiene el tag de cliente y tienes comida
 		//Comparas si tienes el tipo de comida que quería el cliente
-		if(Collision.gameObject.GetComponent<Cliente>().tipoComida == typeOfFood){
+		if(col.gameObject.GetComponent<Cliente>().tipoComida == typeOfFood){
 			
 			time += 10;
 			
