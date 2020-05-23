@@ -10,8 +10,8 @@ public class Timer : MonoBehaviour
    
 
     private bool decreaseTimer = true;
-    [SerializeField] private int minutes = 1;
-    [SerializeField] private int seconds = 0;
+    [SerializeField] private int minutes ;
+    [SerializeField] private int seconds ;
     [SerializeField] private bool endGame = false;
 
     // Start is called before the first frame update
