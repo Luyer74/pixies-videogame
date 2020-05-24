@@ -28,12 +28,12 @@ public class chefMovement : MonoBehaviour
     {
         rb.MovePosition(rb.position + movem * movementSpeed * Time.fixedDeltaTime);
 
-        cookPot = GameObject.Find("cookPot");
+        cookPot = GameObject.Find("cp1");
         RaycastHit2D hit = Physics2D.Raycast(transform.position, cookPot.transform.position, Mathf.Infinity, LayerMask.GetMask("cookingPot"));
         if (hit.collider != null)
         {
             var pos = Vector2.Distance(transform.position, hit.collider.gameObject.transform.position);
-            print("The Cooking pot is " + pos + " studs from the Chef");
+            //print("The Cooking pot is " + pos + " studs from the Chef");
         }
     }
 }
