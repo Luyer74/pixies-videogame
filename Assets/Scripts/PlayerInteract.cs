@@ -51,6 +51,12 @@ public class PlayerInteract : MonoBehaviour
                 Debug.Log("cut ingredient");
                 hasObject = false;
             }
+            else if (obj.CompareTag("Trash"))
+            {
+                Destroy(ingrediente);
+                Debug.Log("tirado a la basura");
+                hasObject = false;
+            }
         }
 
     }
