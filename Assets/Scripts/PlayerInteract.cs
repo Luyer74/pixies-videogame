@@ -11,6 +11,9 @@ public class PlayerInteract : MonoBehaviour
     public GameObject ingrediente2;
     public GameObject ingrediente3;
     public static GameObject ingrediente;
+    public ParticleSystem fire1;
+    public ParticleSystem fire2;
+    public ParticleSystem fire3;
    
     public void getIngredient(GameObject obj)
     {
@@ -45,6 +48,18 @@ public class PlayerInteract : MonoBehaviour
             Instantiate(SonidoSoltar);
             if (obj.CompareTag("CookPot"))
             {
+                if(obj.name == "cp1")
+                {
+                    fire1.Play();
+                }
+                else if(obj.name == "cp2")
+                {
+                    fire2.Play();
+                }
+                else if(obj.name == "cp3")
+                {
+                    fire3.Play();
+                }
                 Destroy(ingrediente);
                 Debug.Log("cooked ingredient");
                 hasObject = false;
