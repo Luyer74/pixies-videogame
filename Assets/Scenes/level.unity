@@ -788,6 +788,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ae5e1630eeb44499978488172995ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SonidoAgarrar: {fileID: 5053162048248331161, guid: eacc4261fb1644641a3dd9dc200871f1,
+    type: 3}
+  SonidoSoltar: {fileID: 1783599407453280225, guid: 49cb3e0406f73433288deea67c6649fc,
+    type: 3}
   hasObject: 0
   ingrediente1: {fileID: 526462370}
   ingrediente2: {fileID: 871579317}

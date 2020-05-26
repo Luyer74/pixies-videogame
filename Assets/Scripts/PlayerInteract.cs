@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
+    public GameObject SonidoAgarrar;
+    public GameObject SonidoSoltar;
     public bool hasObject;
     public GameObject ingrediente1;
     public GameObject ingrediente2;
@@ -14,6 +16,7 @@ public class PlayerInteract : MonoBehaviour
     {
         if (!hasObject)
         {
+            Instantiate(SonidoAgarrar);
             if (obj.name == "tomatoBox")
             {
                 Debug.Log("got tomato");
@@ -39,6 +42,7 @@ public class PlayerInteract : MonoBehaviour
         }
         else
         {
+            Instantiate(SonidoSoltar);
             if (obj.CompareTag("CookPot"))
             {
                 Destroy(ingrediente);
