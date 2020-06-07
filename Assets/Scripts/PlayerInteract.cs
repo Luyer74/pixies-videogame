@@ -14,22 +14,23 @@ public class PlayerInteract : MonoBehaviour
     public ParticleSystem fire1;
     public ParticleSystem fire2;
     public ParticleSystem fire3;
-   
+
     public void getIngredient(GameObject obj)
     {
         if (!hasObject)
         {
-            Instantiate(SonidoAgarrar);
             if (obj.name == "tomatoBox")
             {
+                Instantiate(SonidoAgarrar);
                 Debug.Log("got tomato");
                 hasObject = true;
                 ingrediente = Instantiate(ingrediente1, gameObject.transform);
                 ingrediente.SetActive(true);
-  
+
             }
             else if (obj.name == "Onion Box")
             {
+                Instantiate(SonidoAgarrar);
                 Debug.Log("got onion");
                 hasObject = true;
                 ingrediente = Instantiate(ingrediente2, gameObject.transform);
@@ -37,6 +38,7 @@ public class PlayerInteract : MonoBehaviour
             }
             else if (obj.name == "Mushroom Box")
             {
+                Instantiate(SonidoAgarrar);
                 Debug.Log("got mushroom");
                 hasObject = true;
                 ingrediente = Instantiate(ingrediente3, gameObject.transform);
@@ -45,18 +47,18 @@ public class PlayerInteract : MonoBehaviour
         }
         else
         {
-            Instantiate(SonidoSoltar);
             if (obj.CompareTag("CookPot"))
             {
-                if(obj.name == "cp1")
+                Instantiate(SonidoSoltar);
+                if (obj.name == "cp1")
                 {
                     fire1.Play();
                 }
-                else if(obj.name == "cp2")
+                else if (obj.name == "cp2")
                 {
                     fire2.Play();
                 }
-                else if(obj.name == "cp3")
+                else if (obj.name == "cp3")
                 {
                     fire3.Play();
                 }
@@ -64,14 +66,9 @@ public class PlayerInteract : MonoBehaviour
                 Debug.Log("cooked ingredient");
                 hasObject = false;
             }
-            else if (obj.CompareTag("CutStation"))
-            {
-                Destroy(ingrediente);
-                Debug.Log("cut ingredient");
-                hasObject = false;
-            }
             else if (obj.CompareTag("Trash"))
             {
+                Instantiate(SonidoSoltar);
                 Destroy(ingrediente);
                 Debug.Log("tirado a la basura");
                 hasObject = false;
@@ -80,5 +77,15 @@ public class PlayerInteract : MonoBehaviour
 
     }
 
-
+    public void useIngredient(GameObject obj) 
+    {
+        Instantiate(SonidoSoltar);
+        if (obj.CompareTag("CutStation"))
+        {
+            Destroy(ingrediente);
+            Debug.Log("cut ingredient");
+            hasObject = false;
+        }
+        
+    }
 }

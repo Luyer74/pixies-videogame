@@ -7,6 +7,7 @@ public class chefMovement : MonoBehaviour
     public float movementSpeed = 5f;
     public Rigidbody2D rb;
     Vector2 movem;
+    float lastX, lastY;
     public Animator anim;
     public GameObject cookPot;
     
@@ -19,9 +20,22 @@ public class chefMovement : MonoBehaviour
         //Input
         movem.x = Input.GetAxisRaw("Horizontal");
         movem.y = Input.GetAxisRaw("Vertical");
+
+        if (movem == Vector2.zero)
+        {
+            anim.SetFloat("LastHorizontal", lastX);
+            anim.SetFloat("LastVertical", lastY);
+            anim.SetFloat("Speed", movem.sqrMagnitude);
+        }
+        else
+        {
+            lastX = movem.x;
+            lastY = movem.y;
+            anim.SetFloat("Speed", movem.sqrMagnitude);
+        }
         anim.SetFloat("Horizontal", movem.x);
         anim.SetFloat("Vertical", movem.y);
-        anim.SetFloat("Speed", movem.sqrMagnitude);
+
     }
 
     void FixedUpdate()
