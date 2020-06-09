@@ -1,13 +1,16 @@
-﻿using System.Collections;
+﻿using Pathfinding;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Accessibility;
 using UnityEngine.UI;
 
 public class CutIngredient : MonoBehaviour
 {
-    public GameObject imagen;
+    public GameObject imagen; //barra de tiempo
     Image timeBar;
     public bool isInRange;
+    bool moved = false;
     public KeyCode intkey;
     PlayerInteract cutStation;
     GameObject player;
@@ -33,6 +36,14 @@ public class CutIngredient : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isInRange = false;
+            held = false;
+            timeBar.fillAmount = 0; //barra vacia
+            imagen.SetActive(false);
+            if (moved)
+            {
+                ingrediente.transform.position = ingrediente.transform.position + new Vector3(-1, 0);
+                moved = false;
+            }
         }
     }
 
@@ -46,11 +57,11 @@ public class CutIngredient : MonoBehaviour
     {
         if (isInRange)
         {
-            if (ingrediente)
+            if (ingrediente && !cutStation.isSliced)
             {
                 if (Input.GetKeyDown(intkey))
                 {
-
+                    moved = true;
                     ingrediente.transform.position = ingrediente.transform.position + new Vector3(1, 0);
 
                     imagen.SetActive(true);
@@ -74,15 +85,17 @@ public class CutIngredient : MonoBehaviour
 
             if (Input.GetKeyUp(intkey))
             {
-                if (ingrediente)
+                if (ingrediente && moved)
                 {
                     ingrediente.transform.position = ingrediente.transform.position + new Vector3(-1, 0);
+                    moved = false;
                 }
-                
+
                 timeBar.fillAmount = 0; //barra vacia
                 held = false;
                 imagen.SetActive(false);
             }
         }
+
     }
 }

@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
+    SpriteRenderer spr;
+    public Sprite sliced1;
+    public Sprite sliced2;
+    public Sprite sliced3;
     public GameObject SonidoAgarrar;
     public GameObject SonidoSoltar;
     public bool hasObject;
+    public bool isSliced;
     public GameObject ingrediente1;
     public GameObject ingrediente2;
     public GameObject ingrediente3;
@@ -24,6 +29,7 @@ public class PlayerInteract : MonoBehaviour
                 Instantiate(SonidoAgarrar);
                 Debug.Log("got tomato");
                 hasObject = true;
+                isSliced = false;
                 ingrediente = Instantiate(ingrediente1, gameObject.transform);
                 ingrediente.SetActive(true);
 
@@ -33,6 +39,7 @@ public class PlayerInteract : MonoBehaviour
                 Instantiate(SonidoAgarrar);
                 Debug.Log("got onion");
                 hasObject = true;
+                isSliced = false;
                 ingrediente = Instantiate(ingrediente2, gameObject.transform);
                 ingrediente.SetActive(true);
             }
@@ -41,6 +48,7 @@ public class PlayerInteract : MonoBehaviour
                 Instantiate(SonidoAgarrar);
                 Debug.Log("got mushroom");
                 hasObject = true;
+                isSliced = false;
                 ingrediente = Instantiate(ingrediente3, gameObject.transform);
                 ingrediente.SetActive(true);
             }
@@ -72,6 +80,7 @@ public class PlayerInteract : MonoBehaviour
                 Destroy(ingrediente);
                 Debug.Log("tirado a la basura");
                 hasObject = false;
+                isSliced = false;
             }
         }
 
@@ -82,10 +91,13 @@ public class PlayerInteract : MonoBehaviour
         Instantiate(SonidoSoltar);
         if (obj.CompareTag("CutStation"))
         {
-            Destroy(ingrediente);
+            //cambiar sprite a sprite cortado
+            spr = ingrediente.GetComponentInChildren<SpriteRenderer>();
+            if (ingrediente.name == "Tomato(Clone)") spr.sprite = sliced1;
+            else if (ingrediente.name == "Onion(Clone)") spr.sprite = sliced2;
+            else if (ingrediente.name == "Mushroom(Clone)") spr.sprite = sliced3;
             Debug.Log("cut ingredient");
-            hasObject = false;
+            isSliced = true;
         }
-        
     }
 }
