@@ -1310,7 +1310,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -1413,7 +1413,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 422962633}
   serializedVersion: 6
-  lengthInSec: 15
+  lengthInSec: 20
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -6451,7 +6451,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -11643,13 +11643,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b56667139576c7429b844c3d1d36fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imagen: {fileID: 422962633}
+  imagen: {fileID: 416170874}
   timer: 0
-  holdTime: 15
+  holdTime: 20
   startTime: 0
   isInRange: 0
   intkey: 101
-  particles: {fileID: 0}
+  ingredientCount: 0
+  particles: {fileID: 422962635}
 --- !u!1 &1397648548
 GameObject:
   m_ObjectHideFlags: 0
@@ -12429,7 +12430,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInRange: 0
   intkey: 101
-  SonidoSoltar: {fileID: 0}
+  SonidoSoltar: {fileID: 1783599407453280225, guid: 49cb3e0406f73433288deea67c6649fc,
+    type: 3}
 --- !u!61 &1557392961
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13286,13 +13288,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b56667139576c7429b844c3d1d36fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imagen: {fileID: 1871637516}
+  imagen: {fileID: 2070164627}
   timer: 0
-  holdTime: 15
+  holdTime: 20
   startTime: 0
   isInRange: 0
   intkey: 101
-  particles: {fileID: 0}
+  ingredientCount: 0
+  particles: {fileID: 1871637518}
 --- !u!1 &1853308694
 GameObject:
   m_ObjectHideFlags: 0
@@ -13489,7 +13492,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1871637516}
   serializedVersion: 6
-  lengthInSec: 15
+  lengthInSec: 20
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -18183,13 +18186,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b56667139576c7429b844c3d1d36fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imagen: {fileID: 1991489938}
+  imagen: {fileID: 527404238}
   timer: 0
-  holdTime: 15
+  holdTime: 20
   startTime: 0
   isInRange: 0
   intkey: 101
-  particles: {fileID: 0}
+  ingredientCount: 0
+  particles: {fileID: 1991489940}
 --- !u!61 &1887758694
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19012,7 +19016,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991489938}
   serializedVersion: 6
-  lengthInSec: 15
+  lengthInSec: 20
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -24200,7 +24204,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
