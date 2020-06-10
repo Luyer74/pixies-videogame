@@ -19,6 +19,12 @@ public class PlayerInteract : MonoBehaviour
     public ParticleSystem fire1;
     public ParticleSystem fire2;
     public ParticleSystem fire3;
+    Score score;
+
+    void Start()
+    {
+        score = GameObject.FindObjectOfType(typeof(Score)) as Score;
+    }
 
     public void getIngredient(GameObject obj)
     {
@@ -32,7 +38,7 @@ public class PlayerInteract : MonoBehaviour
                 isSliced = false;
                 ingrediente = Instantiate(ingrediente1, gameObject.transform);
                 ingrediente.SetActive(true);
-
+                score.AddScore();
             }
             else if (obj.name == "Onion Box")
             {
@@ -42,6 +48,7 @@ public class PlayerInteract : MonoBehaviour
                 isSliced = false;
                 ingrediente = Instantiate(ingrediente2, gameObject.transform);
                 ingrediente.SetActive(true);
+                score.SubtractScore();
             }
             else if (obj.name == "Mushroom Box")
             {
