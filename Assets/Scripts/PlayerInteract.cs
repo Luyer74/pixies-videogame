@@ -59,38 +59,7 @@ public class PlayerInteract : MonoBehaviour
                 ingrediente = Instantiate(ingrediente3, gameObject.transform);
                 ingrediente.SetActive(true);
             }
-        }
-        else
-        {
-            if (obj.CompareTag("CookPot"))
-            {
-                Instantiate(SonidoSoltar);
-                if (obj.name == "cp1")
-                {
-                    fire1.Play();
-                }
-                else if (obj.name == "cp2")
-                {
-                    fire2.Play();
-                }
-                else if (obj.name == "cp3")
-                {
-                    fire3.Play();
-                }
-                Destroy(ingrediente);
-                Debug.Log("cooked ingredient");
-                hasObject = false;
-            }
-            else if (obj.CompareTag("Trash"))
-            {
-                Instantiate(SonidoSoltar);
-                Destroy(ingrediente);
-                Debug.Log("tirado a la basura");
-                hasObject = false;
-                isSliced = false;
-            }
-        }
-
+        } 
     }
 
     public void useIngredient(GameObject obj) 
@@ -105,6 +74,17 @@ public class PlayerInteract : MonoBehaviour
             else if (ingrediente.name == "Mushroom(Clone)") spr.sprite = sliced3;
             Debug.Log("cut ingredient");
             isSliced = true;
+        }
+    }
+
+    public void cook(GameObject obj)
+    {
+        if (obj.CompareTag("CookPot"))
+        {
+            Instantiate(SonidoSoltar);
+            Destroy(ingrediente);
+            Debug.Log("cooked ingredient");
+            hasObject = false;
         }
     }
 }
