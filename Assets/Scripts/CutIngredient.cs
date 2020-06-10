@@ -23,7 +23,11 @@ public class CutIngredient : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         player = collision.gameObject;
-        ingrediente = player.transform.GetChild(0).gameObject;
+        //checar si el jugador tiene un ingrediente
+        if (player.transform.childCount > 0)
+        {
+            ingrediente = player.transform.GetChild(0).gameObject;
+        }
         cutStation = collision.GetComponent<PlayerInteract>(); //obtener objeto para usar las funciones de playerinteract
         if (cutStation)
         {
@@ -77,6 +81,7 @@ public class CutIngredient : MonoBehaviour
                     timeBar.fillAmount = (timer - startTime) / holdTime; //llenar barra de tiempo mientras se siga presionando
                     if (timer > (startTime + holdTime))
                     {
+                        //se corta el ingrediente
                         held = true;
                         cutStation.useIngredient(gameObject);
                     }
