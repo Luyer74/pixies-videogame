@@ -11,7 +11,8 @@ public class GameTimer : MonoBehaviour
    
     private bool decreaseTimer = true;
     [SerializeField] private int minutes ;
-    [SerializeField] private int seconds ;
+    [SerializeField] private int seconds;
+    [SerializeField] private int totalSeconds;
     [SerializeField] private bool endGame = false;
     public GameObject gameOverSound;
     public GameObject GameUI;
@@ -31,22 +32,18 @@ public class GameTimer : MonoBehaviour
     {
         if(decreaseTimer && !endGame)
         {
-            seconds -= 1;
-            if (seconds < 0)
+            totalSeconds -= 1;
+            if(totalSeconds == 0)
             {
-                minutes -= 1;
-                if (minutes < 0)
-                {
-                    minutes = 0;
-                    seconds = 0;
-                    endGame = true;
-                }
-                else
-                {
-                    seconds = 59; 
-                }
+                endGame = true;
             }
-            timerText.text = minutes.ToString() + ":" + seconds.ToString();
+            else
+            {
+                minutes = totalSeconds / 60;
+                seconds = totalSeconds % 60;
+            }
+            if (seconds > 9) timerText.text = minutes.ToString() + ":" + seconds.ToString();
+            else timerText.text = minutes.ToString() + ":0" + seconds.ToString();
             StartCoroutine(second_counter());
         }
         else if(endGame)
@@ -92,5 +89,15 @@ public class GameTimer : MonoBehaviour
     public bool GetEndGame()
     {
         return endGame;
+    }
+
+    public void AddSeconds()
+    {
+        totalSeconds = totalSeconds + 10;
+    }
+
+    public void SubtractSeconds()
+    {
+        totalSeconds = totalSeconds - 10;
     }
 }
