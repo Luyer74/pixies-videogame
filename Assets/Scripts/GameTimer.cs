@@ -55,7 +55,7 @@ public class GameTimer : MonoBehaviour
         }
     }
 
-    IEnumerator second_counter()
+    public IEnumerator second_counter()
     {
         decreaseTimer = false;
         yield return new WaitForSeconds(1);
