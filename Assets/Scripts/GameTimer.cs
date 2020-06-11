@@ -4,28 +4,32 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Timer : MonoBehaviour
+public class GameTimer : MonoBehaviour
 {
     [SerializeField] private TMP_Text timerText = null;
     [SerializeField] private Slider slider = null;
    
-
     private bool decreaseTimer = true;
     [SerializeField] private int minutes ;
     [SerializeField] private int seconds ;
     [SerializeField] private bool endGame = false;
+    public GameObject gameOverSound;
+    public GameObject GameUI;
+    public GameObject PauseUI;
+    public GameObject EndGameSuccessUI;
+    public GameObject EndGameFailureUI;
+    public int totalScore;
+    public int highScore;
+    Score score;
 
-    // Start is called before the first frame update
     void Start()
     {
-      
+        score = GameObject.FindObjectOfType(typeof(Score)) as Score;
     }
 
-    // Update is called once per frame
     void Update()
     {
-       
-        if (decreaseTimer && !endGame)
+        if(decreaseTimer && !endGame)
         {
             seconds -= 1;
             if (seconds < 0)
@@ -45,6 +49,10 @@ public class Timer : MonoBehaviour
             timerText.text = minutes.ToString() + ":" + seconds.ToString();
             StartCoroutine(second_counter());
         }
+        else if(endGame)
+        {
+            EndGame();
+        }
     }
 
     IEnumerator second_counter()
@@ -62,5 +70,27 @@ public class Timer : MonoBehaviour
     public void setMaxHealth(int maxhp)
     {
         slider.maxValue = maxhp;
+    }
+
+    public void EndGame()
+    {
+        GameUI.SetActive(false);
+        PauseUI.SetActive(false);
+        Instantiate(gameOverSound);
+        totalScore = score.GetScore();
+        highScore = PlayerPrefs.GetInt("highScore", 0);
+        if (totalScore >= highScore)
+        {
+            EndGameSuccessUI.SetActive(true);
+        }
+        else
+        {
+            EndGameFailureUI.SetActive(true);
+        }
+    }
+
+    public bool GetEndGame()
+    {
+        return endGame;
     }
 }

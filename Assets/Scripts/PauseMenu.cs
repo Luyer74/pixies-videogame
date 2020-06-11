@@ -12,10 +12,19 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuButton;
     public GameObject gameUI;
     public TMP_Text highScoreText;
+    public bool endGame;
+    GameTimer timer;
+
+    void Start()
+    {
+        timer = GameObject.FindObjectOfType(typeof(GameTimer)) as GameTimer;
+        endGame = false;
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        endGame = timer.GetEndGame();
+        if (Input.GetKeyDown(KeyCode.Escape) && !endGame)
         {
             if(gameIsPaused)
             {
