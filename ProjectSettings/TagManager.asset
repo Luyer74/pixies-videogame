@@ -8,6 +8,7 @@ TagManager:
   - CookPot
   - CutStation
   - Trash
+  - WashStation
   layers:
   - Default
   - TransparentFX
