@@ -12,9 +12,11 @@ public class PlayerInteract : MonoBehaviour
     public GameObject SonidoSoltar;
     public bool hasObject;
     public bool isSliced;
+    public string objectType;
     public GameObject ingrediente1;
     public GameObject ingrediente2;
     public GameObject ingrediente3;
+    public GameObject plato1;
     public static GameObject ingrediente;
     public ParticleSystem fire1;
     public ParticleSystem fire2;
@@ -36,6 +38,7 @@ public class PlayerInteract : MonoBehaviour
                 Debug.Log("got tomato");
                 hasObject = true;
                 isSliced = false;
+                objectType = "ingredient";
                 ingrediente = Instantiate(ingrediente1, gameObject.transform);
                 ingrediente.SetActive(true);
                 score.AddScore();
@@ -46,6 +49,7 @@ public class PlayerInteract : MonoBehaviour
                 Debug.Log("got onion");
                 hasObject = true;
                 isSliced = false;
+                objectType = "ingredient";
                 ingrediente = Instantiate(ingrediente2, gameObject.transform);
                 ingrediente.SetActive(true);
                 score.SubtractScore();
@@ -56,7 +60,18 @@ public class PlayerInteract : MonoBehaviour
                 Debug.Log("got mushroom");
                 hasObject = true;
                 isSliced = false;
+                objectType = "ingredient";
                 ingrediente = Instantiate(ingrediente3, gameObject.transform);
+                ingrediente.SetActive(true);
+            }
+            else if (obj.name == "plateGiver")
+            {
+                Instantiate(SonidoAgarrar);
+                Debug.Log("got plate");
+                hasObject = true;
+                isSliced = false;
+                objectType = "plate";
+                ingrediente = Instantiate(plato1, gameObject.transform);
                 ingrediente.SetActive(true);
             }
         } 

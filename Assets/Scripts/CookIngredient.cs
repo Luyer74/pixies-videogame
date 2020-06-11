@@ -41,7 +41,7 @@ public class CookIngredient : MonoBehaviour
     {
         if (isInRange && ingredientCount < 3)
         {
-            if (Input.GetKeyDown(intkey) && player1.hasObject)
+            if (Input.GetKeyDown(intkey) && player1.hasObject && player1.objectType == "ingredient")
             {
                 if (!isCooking)
                 {
