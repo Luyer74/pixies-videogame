@@ -8,6 +8,8 @@ public class getPlate : MonoBehaviour
     public KeyCode intkey; // tecla "E"
     public bool available = true;
     public GameObject sprite;
+    public int used = 0;
+    public Sprite dirtyPlateSprite;
     PlayerInteract player1; //script para interactuar con objetos
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -34,14 +36,14 @@ public class getPlate : MonoBehaviour
         {
             if (Input.GetKeyDown(intkey))
             {
-                if (available == true)
+                if (available == true && player1.GetComponent<PlayerInteract>().hasObject == false)
                 {
                     available = false;
                     sprite.SetActive(false);
                     player1.getIngredient(gameObject); //llamar a player interact con el objeto con el que se interactua
+                    used++;
                     StartCoroutine(ExampleCoroutine());
                 }
-
             }
         }
     }
@@ -50,6 +52,7 @@ public class getPlate : MonoBehaviour
     {
         yield return new WaitForSeconds(15);
         available = true;
+        sprite.GetComponent<SpriteRenderer>().sprite = dirtyPlateSprite;
         sprite.SetActive(true);
     }
 }

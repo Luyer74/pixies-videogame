@@ -8,15 +8,18 @@ public class PlayerInteract : MonoBehaviour
     public Sprite sliced1;
     public Sprite sliced2;
     public Sprite sliced3;
+    public Sprite cleanPlateSprite;
     public GameObject SonidoAgarrar;
     public GameObject SonidoSoltar;
     public bool hasObject;
     public bool isSliced;
+    public bool clean;
     public string objectType;
     public GameObject ingrediente1;
     public GameObject ingrediente2;
     public GameObject ingrediente3;
     public GameObject plato1;
+    public GameObject plato2;
     public static GameObject ingrediente;
     public ParticleSystem fire1;
     public ParticleSystem fire2;
@@ -66,13 +69,28 @@ public class PlayerInteract : MonoBehaviour
             }
             else if (obj.name == "plateGiver")
             {
-                Instantiate(SonidoAgarrar);
-                Debug.Log("got plate");
-                hasObject = true;
-                isSliced = false;
-                objectType = "plate";
-                ingrediente = Instantiate(plato1, gameObject.transform);
-                ingrediente.SetActive(true);
+                if (obj.GetComponent<getPlate>().used == 0) 
+                {
+                    Instantiate(SonidoAgarrar);
+                    Debug.Log("got plate");
+                    hasObject = true;
+                    isSliced = false;
+                    clean = true;
+                    objectType = "plate";
+                    ingrediente = Instantiate(plato1, gameObject.transform);
+                    ingrediente.SetActive(true);
+                }
+                else
+                {
+                    Instantiate(SonidoAgarrar);
+                    Debug.Log("got dirty");
+                    hasObject = true;
+                    isSliced = false;
+                    clean = false;
+                    objectType = "dirtyplate";
+                    ingrediente = Instantiate(plato2, gameObject.transform);
+                    ingrediente.SetActive(true);
+                }
             }
         } 
     }
@@ -89,6 +107,14 @@ public class PlayerInteract : MonoBehaviour
             else if (ingrediente.name == "Mushroom(Clone)") spr.sprite = sliced3;
             Debug.Log("cut ingredient");
             isSliced = true;
+        }
+        else if (obj.CompareTag("WashStation"))
+        {
+            //cambiar sprite a sprite cortado
+            spr = ingrediente.GetComponentInChildren<SpriteRenderer>();
+            if (ingrediente.name == "DirtyPlate(Clone)") spr.sprite = cleanPlateSprite;
+            Debug.Log("washed");
+            clean = true;
         }
     }
 
