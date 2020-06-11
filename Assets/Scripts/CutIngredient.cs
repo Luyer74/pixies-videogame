@@ -61,7 +61,7 @@ public class CutIngredient : MonoBehaviour
     {
         if (isInRange)
         {
-            if (ingrediente && !cutStation.isSliced)
+            if (ingrediente.CompareTag("Ingredient") && !cutStation.isSliced)
             {
                 if (Input.GetKeyDown(intkey))
                 {

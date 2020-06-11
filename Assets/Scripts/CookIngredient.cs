@@ -15,10 +15,17 @@ public class CookIngredient : MonoBehaviour
     PlayerInteract player1; //script para interactuar con objetos
     GameObject player;
     GameObject fire;
+    GameObject ingrediente;
+    int tomatos = 0;
+    int onions = 0;
+    int mushrooms = 0;
     public int ingredientCount = 0; //ingredientes en uso
     public ParticleSystem particles;
     bool isCooking = false;
+    bool goodSoup = true;
+    public bool finishedSoup = false;
 
+ 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         player = collision.gameObject;
@@ -26,6 +33,10 @@ public class CookIngredient : MonoBehaviour
         if (player1)
         {
             isInRange = true;
+        }
+        if (player.transform.childCount > 0)
+        {
+            ingrediente = player.transform.GetChild(0).gameObject;
         }
     }
 
@@ -39,9 +50,9 @@ public class CookIngredient : MonoBehaviour
 
     private void Update()
     {
-        if (isInRange && ingredientCount < 3)
+        if (isInRange && ingrediente && Input.GetKeyDown(intkey))
         {
-            if (Input.GetKeyDown(intkey) && player1.hasObject && player1.objectType == "ingredient")
+            if (ingrediente.CompareTag("Ingredient") && ingredientCount < 3 && !finishedSoup)
             {
                 if (!isCooking)
                 {
@@ -54,8 +65,30 @@ public class CookIngredient : MonoBehaviour
                     particles = fire.GetComponent<ParticleSystem>();
                     particles.Play();
                 }
+                if (!player1.isSliced) goodSoup = false; //si no esta cortado, sopa mala
+                if (ingrediente.name == "Tomato(Clone)") tomatos++;
+                else if (ingrediente.name == "Onion(Clone)") onions++;
+                else if (ingrediente.name == "Mushroom(Clone)") mushrooms++;
                 ingredientCount++;
-                player1.cook(gameObject); //llamar a player interact con el objeto con el que se interactua
+                player1.cook(); //llamar a player interact con el objeto con el que se interactua
+            }
+            else if (ingrediente.CompareTag("Plate") && finishedSoup)
+            {
+                if (goodSoup)
+                {
+                    if (ingredientCount != 3) goodSoup = false; //si no usa 3 ingredientes, sopa mala
+                    else
+                    {
+                        goodSoup = checkIngredients(tomatos, onions, mushrooms); //si no sigue receta, sopa mala
+                    }
+                }
+
+                player1.getSoup(goodSoup, tomatos, onions, mushrooms); //cambiar sprite del plato con sopa
+                finishedSoup = false;
+                ingredientCount = 0;
+                tomatos = 0;
+                onions = 0;
+                mushrooms = 0;
             }
         }
 
@@ -63,21 +96,28 @@ public class CookIngredient : MonoBehaviour
         {
             timer += Time.deltaTime;
             timeBar.fillAmount = 1 - ((timer - startTime) / holdTime);
+            if (timer > (startTime + holdTime))
+            {
+                finishedSoup = true;
+                imagen.SetActive(false);
+                timeBar.fillAmount = 1; //barra vacia
+                isCooking = false;
+                fire.SetActive(false);
+            }
         }
+    }
 
-        if (timer > (startTime + holdTime))
-        {
-            imagen.SetActive(false);
-            timeBar.fillAmount = 1; //barra vacia
-            ingredientCount = 0;
-            isCooking = false;
-            fire.SetActive(false);
-        }
+    private bool checkIngredients(int tomatos, int onions, int mushrooms)
+    {
+        if (tomatos == 3 || onions == 3 || mushrooms == 3) return true;
+        else if (tomatos == 2 && mushrooms == 1) return true;
+        return false;
     }
 
     private void Start()
     {
         imagen.SetActive(false);
         timeBar = imagen.GetComponent<Image>();
+        
     }
 }

@@ -37,9 +37,9 @@ public class Trash : MonoBehaviour
 
     private void Update()
     {
-        if (isInRange)
+        if (isInRange && ingrediente)
         {
-            if (Input.GetKeyDown(intkey))
+            if (Input.GetKeyDown(intkey) && ingrediente.CompareTag("Ingredient"))//solo se tira si es un ingrediente
             {
                 player1.hasObject = false;
                 Instantiate(SonidoSoltar);

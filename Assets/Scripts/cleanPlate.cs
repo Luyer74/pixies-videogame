@@ -14,7 +14,7 @@ public class cleanPlate : MonoBehaviour
     public KeyCode intkey;
     PlayerInteract washStation;
     GameObject player;
-    GameObject ingrediente;
+    GameObject plate;
     public float startTime = 0f; //tiempo de inicio de presionar tecla
     public float timer = 0f;
     public float holdTime = 5.0f; //tiempo requerido para "cortar"
@@ -26,8 +26,8 @@ public class cleanPlate : MonoBehaviour
         //checar si el jugador tiene un ingrediente
         if (player.transform.childCount > 0)
         {
-            ingrediente = player.transform.GetChild(0).gameObject;
-            print("ingrediente: " + ingrediente.name);
+            plate = player.transform.GetChild(0).gameObject;
+            print("ingrediente: " + plate.name);
         }
         washStation = collision.GetComponent<PlayerInteract>(); //obtener objeto para usar las funciones de playerinteract
         if (washStation)
@@ -46,7 +46,7 @@ public class cleanPlate : MonoBehaviour
             imagen.SetActive(false);
             if (moved)
             {
-                ingrediente.transform.position = ingrediente.transform.position + new Vector3(-1, 0);
+                plate.transform.position = plate.transform.position + new Vector3(-1, 0);
                 moved = false;
             }
         }
@@ -64,12 +64,12 @@ public class cleanPlate : MonoBehaviour
          if (isInRange)
         {
             
-            if (ingrediente && ingrediente.name == "DirtyPlate(Clone)")
+            if (plate && plate.name == "DirtyPlate(Clone)")
             {
                 if (Input.GetKeyDown(intkey))
                 {
                     moved = true;
-                    ingrediente.transform.position = ingrediente.transform.position + new Vector3(0, 1);
+                    plate.transform.position = plate.transform.position + new Vector3(0, 1);
 
                     imagen.SetActive(true);
                     startTime = Time.time;
@@ -86,16 +86,16 @@ public class cleanPlate : MonoBehaviour
                     {
                         //se lava el ingrediente
                         held = true;
-                        washStation.useIngredient(gameObject);
+                        washStation.washPlate();
                     }
                 }
             }
 
             if (Input.GetKeyUp(intkey))
             {
-                if (ingrediente && moved)
+                if (plate && moved)
                 {
-                    ingrediente.transform.position = ingrediente.transform.position + new Vector3(0, -1);
+                    plate.transform.position = plate.transform.position + new Vector3(0, -1);
                     moved = false;
                 }
 

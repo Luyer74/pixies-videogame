@@ -9,6 +9,7 @@ TagManager:
   - CutStation
   - Trash
   - WashStation
+  - Plate
   layers:
   - Default
   - TransparentFX
