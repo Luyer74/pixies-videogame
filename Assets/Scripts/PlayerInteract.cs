@@ -25,6 +25,8 @@ public class PlayerInteract : MonoBehaviour
     public GameObject plato1;
     public GameObject plato2;
     public GameObject ingrediente;
+    public GameObject newDirtyPlate;
+    public GameObject dirtyPlatesCounter;
     Score score;
 
     void Start()
@@ -102,6 +104,19 @@ public class PlayerInteract : MonoBehaviour
         hasObject = false;
     }
 
+    public void finish()
+    {
+        Instantiate(SonidoSoltar);
+        Destroy(ingrediente);
+        Debug.Log("finished order");
+        hasObject = false;
+        isCooked = false;
+        score.AddScore();
+        StartCoroutine(FinishDirtyPlateCoroutine());
+    }
+
+
+
     public void getSoup(bool goodSoup, int tomatos, int onions, int mushrooms)
     {
         spr = ingrediente.GetComponentInChildren<SpriteRenderer>();
@@ -110,5 +125,13 @@ public class PlayerInteract : MonoBehaviour
         else if (onions == 3) spr.sprite = OnionSoup;
         else if (mushrooms == 3) spr.sprite = MushroomSoup;
         isCooked = true;
+    }
+
+    IEnumerator FinishDirtyPlateCoroutine()
+    {
+        //espera 15 segundos y aparece un plato sucio
+        yield return new WaitForSeconds(15);
+        newDirtyPlate = Instantiate(plato2, dirtyPlatesCounter.transform);
+        newDirtyPlate.SetActive(true);
     }
 }
