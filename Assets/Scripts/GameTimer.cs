@@ -33,9 +33,11 @@ public class GameTimer : MonoBehaviour
         if(decreaseTimer && !endGame)
         {
             totalSeconds -= 1;
-            if(totalSeconds == 0)
+            if(totalSeconds < 0)
             {
-                endGame = true;
+                minutes = 0;
+                seconds = 0;
+		endGame = true;
             }
             else
             {
@@ -68,6 +70,12 @@ public class GameTimer : MonoBehaviour
     {
         slider.maxValue = maxhp;
     }
+
+    public void increaseTimer(int sec)
+    {
+        seconds += sec;
+    }
+
 
     public void EndGame()
     {

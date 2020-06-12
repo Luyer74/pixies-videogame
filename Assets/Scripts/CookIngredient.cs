@@ -1,123 +1,110 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CookIngredient : MonoBehaviour
+public class CookIngredients : MonoBehaviour
 {
-    public GameObject imagen; //barra de tiempo
-    Image timeBar;
-    public float timer = 0f;
-    public float holdTime = 20.00f; //tiempo requerido para cocinar
-    public float startTime = 0f;
-    public bool isInRange; //esta en rango con alguhn objeto
-    public KeyCode intkey; // tecla "E"
-    PlayerInteract player1; //script para interactuar con objetos
-    GameObject player;
-    GameObject fire;
-    GameObject ingrediente;
-    int tomatos = 0;
-    int onions = 0;
-    int mushrooms = 0;
-    public int ingredientCount = 0; //ingredientes en uso
-    public ParticleSystem particles;
-    bool isCooking = false;
-    bool goodSoup = true;
-    public bool finishedSoup = false;
+    public GameObject imagen1;
+    public GameObject imagen2;
+    public GameObject imagen3;
 
- 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        player = collision.gameObject;
-        player1 = collision.GetComponent<PlayerInteract>(); //obtener objeto para usar las funciones de playerinteract
-        if (player1)
-        {
-            isInRange = true;
-        }
-        if (player.transform.childCount > 0)
-        {
-            ingrediente = player.transform.GetChild(0).gameObject;
-        }
-    }
+    //Barra de sartenes
+    private Image timeBar1;
+    private Image timeBar2;
+    private Image timeBar3;
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            isInRange = false;
-        }
-    }
+    private float timer1 = 0f;
+    private float timer2 = 0f;
+    private float timer3 = 0f;
+    private float cookTime = 5.0f; //tiempo requerido para "cocinar"
 
-    private void Update()
-    {
-        if (isInRange && ingrediente && Input.GetKeyDown(intkey))
-        {
-            if (ingrediente.CompareTag("Ingredient") && ingredientCount < 3 && !finishedSoup)
-            {
-                if (!isCooking)
-                {
-                    imagen.SetActive(true);
-                    startTime = Time.time;
-                    timer = startTime;
-                    isCooking = true;
-                    fire = gameObject.transform.GetChild(0).gameObject;
-                    fire.SetActive(true);
-                    particles = fire.GetComponent<ParticleSystem>();
-                    particles.Play();
-                }
-                if (!player1.isSliced) goodSoup = false; //si no esta cortado, sopa mala
-                if (ingrediente.name == "Tomato(Clone)") tomatos++;
-                else if (ingrediente.name == "Onion(Clone)") onions++;
-                else if (ingrediente.name == "Mushroom(Clone)") mushrooms++;
-                ingredientCount++;
-                player1.cook(); //llamar a player interact con el objeto con el que se interactua
-            }
-            else if (ingrediente.CompareTag("Plate") && finishedSoup && !player1.isCooked)
-            {
-                if (goodSoup)
-                {
-                    if (ingredientCount != 3) goodSoup = false; //si no usa 3 ingredientes, sopa mala
-                    else
-                    {
-                        goodSoup = checkIngredients(tomatos, onions, mushrooms); //si no sigue receta, sopa mala
-                    }
-                }
+    private bool isCooking1 = false;
+    private bool isCooking2 = false;
+    private bool isCooking3 = false;
 
-                player1.getSoup(goodSoup, tomatos, onions, mushrooms); //cambiar sprite del plato con sopa
-                finishedSoup = false;
-                ingredientCount = 0;
-                tomatos = 0;
-                onions = 0;
-                mushrooms = 0;
-            }
-        }
-
-        if (isCooking)
-        {
-            timer += Time.deltaTime;
-            timeBar.fillAmount = 1 - ((timer - startTime) / holdTime);
-            if (timer > (startTime + holdTime))
-            {
-                finishedSoup = true;
-                imagen.SetActive(false);
-                timeBar.fillAmount = 1; //barra vacia
-                isCooking = false;
-                fire.SetActive(false);
-            }
-        }
-    }
-
-    private bool checkIngredients(int tomatos, int onions, int mushrooms)
-    {
-        if (tomatos == 3 || onions == 3 || mushrooms == 3) return true;
-        else if (tomatos == 2 && mushrooms == 1) return true;
-        return false;
-    }
+    private float startTime1;
+    private float startTime2;
+    private float startTime3;
 
     private void Start()
     {
-        imagen.SetActive(false);
-        timeBar = imagen.GetComponent<Image>();
-        
+        imagen1.SetActive(false);
+        timeBar1 = imagen1.GetComponent<Image>();
+
+        imagen2.SetActive(false);
+        timeBar2 = imagen2.GetComponent<Image>();
+
+        imagen3.SetActive(false);
+        timeBar3 = imagen3.GetComponent<Image>();
+    }
+
+    public void cookIngredient(int num)
+    {
+        if (num == 1)
+        {
+            isCooking1 = true;
+            startTime1 = Time.time;
+            timer1 = startTime1;
+            imagen1.SetActive(true);
+            Debug.Log("Cook 1");
+        }
+        else if (num == 2)
+        {
+            isCooking2 = true;
+            startTime2 = Time.time;
+            timer2 = startTime2;
+            imagen2.SetActive(true);
+            Debug.Log("Cook 2");
+        }
+        else{
+            isCooking3 = true;
+            startTime3 = Time.time;
+            timer3 = startTime3;
+            imagen3.SetActive(true);
+            Debug.Log("Cook 3");
+        }
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (isCooking1)
+        {
+            timer1 += Time.deltaTime;
+            timeBar1.fillAmount = (timer1 - startTime1) / cookTime; //llenar barra de tiempo mientras se siga presionando
+            if (timer1 > (startTime1 + cookTime))
+            {
+                timeBar1.fillAmount = 0; //barra vacia
+                imagen1.SetActive(false);
+                isCooking1 = false;
+            }
+        }
+
+        if (isCooking2)
+        {
+            timer2 += Time.deltaTime;
+            timeBar2.fillAmount = (timer2 - startTime2) / cookTime; //llenar barra de tiempo mientras se siga presionando
+            if (timer2 > (startTime2 + cookTime))
+            {
+                timeBar2.fillAmount = 0; //barra vacia
+                imagen2.SetActive(false);
+                isCooking2 = false;
+            }
+        }
+
+        if (isCooking3)
+        {
+            timer3 += Time.deltaTime;
+            timeBar3.fillAmount = (timer3 - startTime3) / cookTime; //llenar barra de tiempo mientras se siga presionando
+            if (timer3 > (startTime3 + cookTime))
+            {
+                timeBar3.fillAmount = 0; //barra vacia
+                imagen3.SetActive(false);
+                isCooking3 = false;
+            }
+        }
     }
 }
+

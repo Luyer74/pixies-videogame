@@ -1,11 +1,11 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class GetIngredient : MonoBehaviour
 {
-    public bool isInRange; //esta en rango con alguhn objeto
+    public bool isInRange; //esta en rango con algun objeto
     public KeyCode intkey; // tecla "E"
     PlayerInteract player1; //script para interactuar con objetos
 
