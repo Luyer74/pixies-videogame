@@ -72,7 +72,7 @@ public class CookIngredient : MonoBehaviour
                 ingredientCount++;
                 player1.cook(); //llamar a player interact con el objeto con el que se interactua
             }
-            else if (ingrediente.CompareTag("Plate") && finishedSoup)
+            else if (ingrediente.CompareTag("Plate") && finishedSoup && !player1.isCooked)
             {
                 if (goodSoup)
                 {

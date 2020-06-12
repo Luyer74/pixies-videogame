@@ -18,12 +18,13 @@ public class PlayerInteract : MonoBehaviour
     public bool hasObject;
     public bool isSliced;
     public bool clean;
+    public bool isCooked;
     public GameObject ingrediente1;
     public GameObject ingrediente2;
     public GameObject ingrediente3;
     public GameObject plato1;
     public GameObject plato2;
-    public static GameObject ingrediente;
+    public GameObject ingrediente;
     Score score;
 
     void Start()
@@ -108,30 +109,6 @@ public class PlayerInteract : MonoBehaviour
         else if (tomatos == 3) spr.sprite = TomatoSoup;
         else if (onions == 3) spr.sprite = OnionSoup;
         else if (mushrooms == 3) spr.sprite = MushroomSoup;
-
-    }
-
-    public void getPlate(GameObject obj)
-    {
-        if (!obj.GetComponent<getPlate>().used)
-        {
-            Instantiate(SonidoAgarrar);
-            Debug.Log("got plate");
-            hasObject = true;
-            isSliced = false;
-            clean = true;
-            ingrediente = Instantiate(plato1, gameObject.transform);
-            ingrediente.SetActive(true);
-        }
-        else
-        {
-            Instantiate(SonidoAgarrar);
-            Debug.Log("got dirty");
-            hasObject = true;
-            isSliced = false;
-            clean = false;
-            ingrediente = Instantiate(plato2, gameObject.transform);
-            ingrediente.SetActive(true);
-        }
+        isCooked = true;
     }
 }

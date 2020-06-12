@@ -59,7 +59,7 @@ public class CutIngredient : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isInRange)
+        if (isInRange && ingrediente)
         {
             if (ingrediente.CompareTag("Ingredient") && !cutStation.isSliced)
             {

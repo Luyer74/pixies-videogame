@@ -40,7 +40,7 @@ public class getPlate : MonoBehaviour
                 {
                     available = false;
                     sprite.SetActive(false);
-                    player1.getPlate(gameObject); //llamar a player interact con el objeto con el que se interactua
+                    //player1.getPlate(gameObject)
                     used = true;
                     StartCoroutine(ExampleCoroutine());
                 }
@@ -48,7 +48,7 @@ public class getPlate : MonoBehaviour
         }
     }
 
-    
+
     IEnumerator ExampleCoroutine()
     {
         yield return new WaitForSeconds(15);
@@ -56,6 +56,5 @@ public class getPlate : MonoBehaviour
         sprite.GetComponent<SpriteRenderer>().sprite = dirtyPlateSprite;
         sprite.SetActive(true);
     }
-    
-}
 
+}
