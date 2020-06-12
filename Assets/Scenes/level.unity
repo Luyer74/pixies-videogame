@@ -8970,6 +8970,74 @@ MonoBehaviour:
   isSliced: 0
   clean: 0
   isCooked: 0
+--- !u!1 &678521083
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 678521085}
+  - component: {fileID: 678521084}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &678521084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678521083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f10d2cec4a3242c6ae467cd9c5c8741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj1: {fileID: 48990912}
+  obj2: {fileID: 1339457295}
+  obj3: {fileID: 2028173599}
+  Timer: {fileID: 681266931}
+  mushroom: {fileID: 21300000, guid: c3b65f353c80dc14b921e4866f6ea5ce, type: 3}
+  tomato: {fileID: 21300000, guid: 12bbdc9945736d54d98b7df6423fa75d, type: 3}
+  onion: {fileID: 21300000, guid: 56ae2a13eb7dfc04a921563ccbbda774, type: 3}
+  mushroomDish: {fileID: 21300000, guid: ccb6aa670235291438bc470c322df860, type: 3}
+  tomatoDish: {fileID: 21300000, guid: f5070680b16dbca4680a334b7d588bc9, type: 3}
+  onionDish: {fileID: 21300000, guid: e4222a206b1700c43b7393265d099f0e, type: 3}
+  img_plato1:
+  - {fileID: 1522692261}
+  - {fileID: 2067617772}
+  - {fileID: 1866658879}
+  - {fileID: 733997696}
+  img_plato2:
+  - {fileID: 476122829}
+  - {fileID: 2067424122}
+  - {fileID: 600025738}
+  - {fileID: 985903801}
+  img_plato3:
+  - {fileID: 1960253169}
+  - {fileID: 301744320}
+  - {fileID: 1105822442}
+  - {fileID: 2053986914}
+--- !u!4 &678521085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678521083}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &681266931
 GameObject:
   m_ObjectHideFlags: 0
