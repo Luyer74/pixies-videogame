@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Trash : MonoBehaviour
 {
+    public Sprite dirtyPlate;
+    SpriteRenderer spr;
     public bool isInRange; //esta en rango con alguhn objeto
     public KeyCode intkey; // tecla "E"
     GameObject player; 
@@ -39,11 +41,22 @@ public class Trash : MonoBehaviour
     {
         if (isInRange && ingrediente)
         {
-            if (Input.GetKeyDown(intkey) && ingrediente.CompareTag("Ingredient"))//solo se tira si es un ingrediente
+            if (Input.GetKeyDown(intkey))//solo se tira si es un ingrediente
             {
-                player1.hasObject = false;
-                Instantiate(SonidoSoltar);
-                Destroy(ingrediente);
+                if (ingrediente.CompareTag("Ingredient"))
+                {
+                    player1.hasObject = false;
+                    Instantiate(SonidoSoltar);
+                    Destroy(ingrediente);
+                }
+                else if(ingrediente.CompareTag("Plate") && player1.isCooked)
+                {
+                    Instantiate(SonidoSoltar);
+                    spr = ingrediente.GetComponentInChildren<SpriteRenderer>();
+                    spr.sprite = dirtyPlate;
+                    player1.clean = false;
+                    player1.isCooked = false;
+                }
                 Debug.Log("Tirado a la basura");
             }
         }

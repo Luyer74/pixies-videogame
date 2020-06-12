@@ -89,7 +89,7 @@ public class PlayerInteract : MonoBehaviour
     public void washPlate()
     {
         spr = ingrediente.GetComponentInChildren<SpriteRenderer>();
-        if (ingrediente.name == "DirtyPlate(Clone)") spr.sprite = cleanPlateSprite;
+        if (ingrediente.name == "DirtyPlate(Clone)" || !clean) spr.sprite = cleanPlateSprite;
         Debug.Log("washed");
         clean = true;
     }

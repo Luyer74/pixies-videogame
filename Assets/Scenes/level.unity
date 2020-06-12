@@ -7561,7 +7561,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512420946}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 2.8, z: -18.95321}
+  m_LocalPosition: {x: 2, y: 2.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1715718571}
@@ -7613,7 +7613,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0053468347, y: -0.83156633}
+  m_Offset: {x: -0.0053468347, y: -0.9280094}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7624,7 +7624,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.88166964, y: 0.81370926}
+  m_Size: {x: 0.88166964, y: 0.62082314}
   m_EdgeRadius: 0
 --- !u!114 &519626880
 MonoBehaviour:
@@ -14628,6 +14628,7 @@ MonoBehaviour:
   intkey: 101
   ingredientCount: 0
   particles: {fileID: 422962635}
+  isCooking: 0
   finishedSoup: 0
 --- !u!1 &1350211258
 GameObject:
@@ -15873,6 +15874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb7ce7ac23b2834caad032b30eeee17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dirtyPlate: {fileID: 21300000, guid: a9bea6fa0d01afc4d972c4f912e75584, type: 3}
   isInRange: 0
   intkey: 101
   SonidoSoltar: {fileID: 1783599407453280225, guid: 49cb3e0406f73433288deea67c6649fc,
@@ -17116,12 +17118,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imagen: {fileID: 2070164627}
   timer: 0
-  holdTime: 15
+  holdTime: 20
   startTime: 0
   isInRange: 0
   intkey: 101
   ingredientCount: 0
   particles: {fileID: 1871637518}
+  isCooking: 0
   finishedSoup: 0
 --- !u!1 &1797180860
 GameObject:
@@ -17377,7 +17380,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827165828}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 2.8, z: -18.95321}
+  m_LocalPosition: {x: 2, y: 2.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1969560183}
@@ -22358,6 +22361,7 @@ MonoBehaviour:
   intkey: 101
   ingredientCount: 0
   particles: {fileID: 1991489940}
+  isCooking: 0
   finishedSoup: 0
 --- !u!61 &1887758694
 BoxCollider2D:
@@ -23067,7 +23071,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1954519709}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 2.8, z: -18.95321}
+  m_LocalPosition: {x: 2, y: 2.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1595587253}
