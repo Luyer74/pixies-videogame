@@ -9443,7 +9443,7 @@ MonoBehaviour:
   slider: {fileID: 0}
   minutes: 0
   seconds: 0
-  totalSeconds: 300
+  totalSeconds: 1
   endGame: 0
   successSound: {fileID: 8350089536685601861, guid: 25c22f9e448084a4bbfaa423bd39e25b,
     type: 3}
@@ -9451,6 +9451,7 @@ MonoBehaviour:
     type: 3}
   GameUI: {fileID: 1685923450}
   PauseUI: {fileID: 706414229}
+  TimerUI: {fileID: 681266931}
   EndGameSuccessUI: {fileID: 859941473}
   EndGameFailureUI: {fileID: 2114648377}
   totalScore: 0
@@ -29209,6 +29210,7 @@ MonoBehaviour:
   failureSound: {fileID: 0}
   GameUI: {fileID: 1685923450}
   PauseUI: {fileID: 0}
+  TimerUI: {fileID: 0}
   EndGameSuccessUI: {fileID: 859941473}
   EndGameFailureUI: {fileID: 0}
   totalScore: 0

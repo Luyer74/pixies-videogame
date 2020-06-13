@@ -18,6 +18,7 @@ public class GameTimer : MonoBehaviour
     public GameObject failureSound;
     public GameObject GameUI;
     public GameObject PauseUI;
+    public GameObject TimerUI;
     public GameObject EndGameSuccessUI;
     public GameObject EndGameFailureUI;
     public int totalScore;
@@ -82,6 +83,7 @@ public class GameTimer : MonoBehaviour
     {
         GameUI.SetActive(false);
         PauseUI.SetActive(false);
+        TimerUI.transform.position = new Vector3(-1000000, -1000000, -1000000);
         totalScore = score.GetScore();
         highScore = PlayerPrefs.GetInt("highScore", 0);
         if (totalScore >= highScore)
