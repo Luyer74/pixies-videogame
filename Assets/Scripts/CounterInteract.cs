@@ -65,7 +65,7 @@ public class CounterInteract : MonoBehaviour
             else if(!available && !player1.hasObject)
             {
                 obj.transform.SetParent(player.transform, false);
-                spr.sortingOrder = 3;//cambiar posicion
+                spr.sortingOrder = 4;//cambiar posicion
                 player1.ingrediente = obj;
                 player1.hasObject = true;
                 player1.isSliced = isSliced;
