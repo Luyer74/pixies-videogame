@@ -42,11 +42,12 @@ public class ManageObjective : MonoBehaviour
     //La funcion asigna las ingredientes para preparas el plato específico (1, 2 o 3)
     public void setObjective(int plato)
     {
+    	int ing = UnityEngine.Random.Range(0, 3);
         if (plato == 1)
         {
             for (int i = 0; i < 3; i++)
             {
-                plato1[i] = UnityEngine.Random.Range(0, 3);
+                plato1[i] = ing;
                 
                 img_plato1[i].GetComponent<Image>().sprite = setIngridient(plato1[i]);
             }
@@ -57,7 +58,7 @@ public class ManageObjective : MonoBehaviour
         {
             for (int i = 0; i < 3; i++)
             {
-                plato2[i] = UnityEngine.Random.Range(0, 3);
+                plato2[i] = ing;
                 
                 img_plato2[i].GetComponent<Image>().sprite = setIngridient(plato2[i]);
             }
@@ -68,7 +69,7 @@ public class ManageObjective : MonoBehaviour
         {
             for (int i = 0; i < 3; i++)
             {
-                plato3[i] = UnityEngine.Random.Range(0, 3);
+                plato3[i] = ing;
 
                 img_plato3[i].GetComponent<Image>().sprite = setIngridient(plato3[i]);
             }
