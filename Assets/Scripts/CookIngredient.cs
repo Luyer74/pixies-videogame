@@ -24,6 +24,9 @@ public class CookIngredient : MonoBehaviour
     public bool isCooking = false;
     bool goodSoup = true;
     public bool finishedSoup = false;
+    public bool soupExpired = false;
+    public float expiredStartTime = 0f;
+    public float expiredTimer = 0f;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -79,7 +82,7 @@ public class CookIngredient : MonoBehaviour
                     if (ingredientCount != 3) goodSoup = false; //si no usa 3 ingredientes, sopa mala
                     else
                     {
-                        goodSoup = checkIngredients(tomatos, onions, mushrooms); //si no sigue receta, sopa mala
+                        goodSoup = !soupExpired && checkIngredients(tomatos, onions, mushrooms); //si no sigue receta, sopa mala
                     }
                 }
 
@@ -94,6 +97,7 @@ public class CookIngredient : MonoBehaviour
 
         if (isCooking)
         {
+            soupExpired = false;
             timer += Time.deltaTime;
             timeBar.fillAmount = 1 - ((timer - startTime) / holdTime);
             if (timer > (startTime + holdTime))
@@ -103,6 +107,18 @@ public class CookIngredient : MonoBehaviour
                 timeBar.fillAmount = 1; //barra vacia
                 isCooking = false;
                 fire.SetActive(false);
+                expiredStartTime = Time.time;
+                expiredTimer = expiredStartTime;
+            }
+        }
+
+        if(finishedSoup)
+        {
+            expiredTimer += Time.deltaTime;
+            if(expiredTimer - expiredStartTime > 10)
+            {
+                Debug.Log("EXPIRED");
+                soupExpired = true;
             }
         }
     }
