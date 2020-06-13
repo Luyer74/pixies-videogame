@@ -12,6 +12,8 @@ public class takeFinishedPlate : MonoBehaviour
     private int[] plato = new int[3];
     Score score;
     ManageObjective objective;
+    public GameObject goodPlateSound;
+    public GameObject badPlateSound;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -49,12 +51,12 @@ public class takeFinishedPlate : MonoBehaviour
             plato = player1.GetSoupIngredients();
             if(objective.checkDish(plato))
             {
-                Debug.Log("yay");
+                Instantiate(badPlateSound);
                 score.AddScore();
             }
             else
             {
-                Debug.Log("nay");
+                Instantiate(badPlateSound);
                 score.SubtractScore();
             }
         }
