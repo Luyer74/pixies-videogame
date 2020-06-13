@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.AccessControl;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
@@ -28,12 +29,7 @@ public class PlayerInteract : MonoBehaviour
     public GameObject newDirtyPlate;
     public GameObject dirtyPlatesCounter;
     CounterInteract platosSucios;
-    Score score;
-
-    void Start()
-    {
-        score = GameObject.FindObjectOfType(typeof(Score)) as Score;
-    }
+    private int[] plato = new int[3];
 
     public void getIngredient(GameObject obj)
     {
@@ -48,7 +44,6 @@ public class PlayerInteract : MonoBehaviour
                 
                 ingrediente = Instantiate(ingrediente1, gameObject.transform);
                 ingrediente.SetActive(true);
-                score.AddScore();
             }
             else if (obj.name == "Onion Box")
             {
@@ -59,7 +54,6 @@ public class PlayerInteract : MonoBehaviour
                 
                 ingrediente = Instantiate(ingrediente2, gameObject.transform);
                 ingrediente.SetActive(true);
-                score.SubtractScore();
             }
             else if (obj.name == "Mushroom Box")
             {
@@ -113,11 +107,8 @@ public class PlayerInteract : MonoBehaviour
         hasObject = false;
         isCooked = false;
         clean = false;
-        score.AddScore();
         StartCoroutine(FinishDirtyPlateCoroutine());
     }
-
-
 
     public void getSoup(bool goodSoup, int tomatos, int onions, int mushrooms)
     {
@@ -127,6 +118,28 @@ public class PlayerInteract : MonoBehaviour
         else if (onions == 3) spr.sprite = OnionSoup;
         else if (mushrooms == 3) spr.sprite = MushroomSoup;
         isCooked = true;
+    }
+
+    public int[] GetSoupIngredients()
+    {
+        spr = ingrediente.GetComponentInChildren<SpriteRenderer>();
+        if (spr.sprite == badSoup)
+        {
+            for (int i = 0; i < 3; i++) plato[i] = i;
+        }
+        else if (spr.sprite == TomatoSoup)
+        {
+            for (int i = 0; i < 3; i++) plato[i] = 1;
+        }
+        else if (spr.sprite == OnionSoup)
+        {
+            for (int i = 0; i < 3; i++) plato[i] = 2;
+        }
+        else if (spr.sprite == MushroomSoup)
+        {
+            for (int i = 0; i < 3; i++) plato[i] = 0;
+        }
+        return plato;
     }
 
     IEnumerator FinishDirtyPlateCoroutine()

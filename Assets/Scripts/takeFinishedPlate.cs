@@ -9,6 +9,9 @@ public class takeFinishedPlate : MonoBehaviour
     PlayerInteract player1; //script para interactuar con objetos
     GameObject player;
     public GameObject ingrediente;
+    private int[] plato = new int[3];
+    Score score;
+    ManageObjective objective;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -32,12 +35,28 @@ public class takeFinishedPlate : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        score = GameObject.FindObjectOfType(typeof(Score)) as Score;
+        objective = GameObject.FindObjectOfType(typeof(ManageObjective)) as ManageObjective;
+    }
+
     void Update()
     {
         if (isInRange && Input.GetKeyDown(intkey) && ingrediente && player1.isCooked == true)
         {
             player1.finish();
+            plato = player1.GetSoupIngredients();
+            if(objective.checkDish(plato))
+            {
+                Debug.Log("yay");
+                score.AddScore();
+            }
+            else
+            {
+                Debug.Log("nay");
+                score.SubtractScore();
+            }
         }
     }
 }
