@@ -16,7 +16,7 @@ public class ManageObjective : MonoBehaviour
     public GameObject obj2;
     public GameObject obj3;
 
-    public GameObject Timer;
+    Score score;
 
     public Sprite mushroom;
     public Sprite tomato;
@@ -37,6 +37,7 @@ public class ManageObjective : MonoBehaviour
         setObjective(1);
         setObjective(2);
         setObjective(3);
+        score = GameObject.FindObjectOfType(typeof(Score)) as Score;
     }
 
     //La funcion asigna las ingredientes para preparas el plato específico (1, 2 o 3)
@@ -127,25 +128,25 @@ public class ManageObjective : MonoBehaviour
         if(done.SequenceEqual(plato1))
         {   
             obj1.SetActive(false);
-            Timer.GetComponent<GameTimer>().increaseTimer(20); //Si el plato es correcto se aumenta el tiempo
+            score.AddScore(); //Si el plato es correcto se añade puntos
             StartCoroutine(newDish(1, obj1));
             return true;
         }else if (done.SequenceEqual(plato2))
         {
             obj2.SetActive(false);
-            Timer.GetComponent<GameTimer>().increaseTimer(20);
+            score.AddScore();
             StartCoroutine(newDish(2, obj2));
             return true;
         }else if (done.SequenceEqual(plato3))
         {
             obj3.SetActive(false);
-            Timer.GetComponent<GameTimer>().increaseTimer(20);
+            score.AddScore();
             StartCoroutine(newDish(3, obj3));
             return true;
         }
         else
         {
-            Timer.GetComponent<GameTimer>().increaseTimer(-20); //Si el plato es incorrecto disminuye el tiempo
+            score.SubtractScore(); //Si el plato es incorrecto disminuye puntos
             return false;
         }
     }

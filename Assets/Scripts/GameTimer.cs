@@ -103,7 +103,7 @@ public class GameTimer : MonoBehaviour
 
     public void AddSeconds()
     {
-        totalSeconds = totalSeconds + 10;
+        totalSeconds = totalSeconds + 20;
     }
 
     public void SubtractSeconds()
