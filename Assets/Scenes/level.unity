@@ -13769,6 +13769,8 @@ MonoBehaviour:
   timer: 0
   holdTime: 3
   held: 0
+  SonidoLavar: {fileID: 3089010739353048698, guid: 3fa7c2ae288604ec28219156cc0437f4,
+    type: 3}
 --- !u!61 &1080820905
 BoxCollider2D:
   m_ObjectHideFlags: 0
