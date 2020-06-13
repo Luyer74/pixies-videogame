@@ -13971,7 +13971,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099808723}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 18.95321}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 648589812}
@@ -16994,7 +16994,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1595587252}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.1843538, y: -3.2747176, z: 0}
+  m_LocalPosition: {x: -2.1843538, y: -3.2747176, z: 18.95321}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1954519710}
@@ -17350,6 +17350,10 @@ MonoBehaviour:
   isInRange: 0
   intkey: 101
   ingrediente: {fileID: 0}
+  goodPlateSound: {fileID: 2040514959910377766, guid: d550bc4e850b7414a92382d732fc3e98,
+    type: 3}
+  badPlateSound: {fileID: 4523637851925387297, guid: fa7b619ab697d654aada0e4622f8eee9,
+    type: 3}
 --- !u!1 &1682592191
 GameObject:
   m_ObjectHideFlags: 0
