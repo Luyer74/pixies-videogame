@@ -51,7 +51,7 @@ public class takeFinishedPlate : MonoBehaviour
             plato = player1.GetSoupIngredients();
             if(objective.checkDish(plato))
             {
-                Instantiate(badPlateSound);
+                Instantiate(goodPlateSound);
                 score.AddScore();
             }
             else
