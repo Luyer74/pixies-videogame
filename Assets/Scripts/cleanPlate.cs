@@ -66,7 +66,7 @@ public class cleanPlate : MonoBehaviour
          if (isInRange)
         {
             
-            if (plate && (plate.name == "DirtyPlate(Clone)" || !washStation.clean))
+            if (plate && plate.CompareTag("Plate") && !washStation.isCooked)
             {
                 if (Input.GetKeyDown(intkey))
                 {
