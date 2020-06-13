@@ -9444,9 +9444,11 @@ MonoBehaviour:
   slider: {fileID: 0}
   minutes: 0
   seconds: 0
-  totalSeconds: 255
+  totalSeconds: 5
   endGame: 0
-  gameOverSound: {fileID: 8649683505604503547, guid: 398dde0d4e4eb8d42ae52fa26c5d92dd,
+  successSound: {fileID: 8649683505604503547, guid: 398dde0d4e4eb8d42ae52fa26c5d92dd,
+    type: 3}
+  failureSound: {fileID: 8649683505604503547, guid: 398dde0d4e4eb8d42ae52fa26c5d92dd,
     type: 3}
   GameUI: {fileID: 1685923450}
   PauseUI: {fileID: 706414229}
@@ -29204,7 +29206,8 @@ MonoBehaviour:
   seconds: 30
   totalSeconds: 0
   endGame: 0
-  gameOverSound: {fileID: 0}
+  successSound: {fileID: 0}
+  failureSound: {fileID: 0}
   GameUI: {fileID: 1685923450}
   PauseUI: {fileID: 0}
   EndGameSuccessUI: {fileID: 859941473}

@@ -14,7 +14,8 @@ public class GameTimer : MonoBehaviour
     [SerializeField] private int seconds;
     [SerializeField] private int totalSeconds;
     [SerializeField] private bool endGame = false;
-    public GameObject gameOverSound;
+    public GameObject successSound;
+    public GameObject failureSound;
     public GameObject GameUI;
     public GameObject PauseUI;
     public GameObject EndGameSuccessUI;
@@ -81,16 +82,17 @@ public class GameTimer : MonoBehaviour
     {
         GameUI.SetActive(false);
         PauseUI.SetActive(false);
-        Instantiate(gameOverSound);
         totalScore = score.GetScore();
         highScore = PlayerPrefs.GetInt("highScore", 0);
         if (totalScore >= highScore)
         {
             EndGameSuccessUI.SetActive(true);
+            Instantiate(successSound);
         }
         else
         {
             EndGameFailureUI.SetActive(true);
+            Instantiate(failureSound);
         }
     }
 
