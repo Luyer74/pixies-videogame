@@ -24,6 +24,7 @@ public class GameTimer : MonoBehaviour
     public int totalScore;
     public int highScore;
     Score score;
+    public bool endedgame = false;
 
     void Start()
     {
@@ -50,9 +51,10 @@ public class GameTimer : MonoBehaviour
             else timerText.text = minutes.ToString() + ":0" + seconds.ToString();
             StartCoroutine(second_counter());
         }
-        else if(endGame)
+        else if(endGame && !endedgame)
         {
             EndGame();
+            endedgame = true;
         }
     }
 

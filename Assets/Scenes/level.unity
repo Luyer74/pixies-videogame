@@ -9443,7 +9443,7 @@ MonoBehaviour:
   slider: {fileID: 0}
   minutes: 0
   seconds: 0
-  totalSeconds: 300
+  totalSeconds: 5
   endGame: 0
   successSound: {fileID: 8350089536685601861, guid: 25c22f9e448084a4bbfaa423bd39e25b,
     type: 3}
@@ -9456,6 +9456,7 @@ MonoBehaviour:
   EndGameFailureUI: {fileID: 2114648377}
   totalScore: 0
   highScore: 0
+  endedgame: 0
 --- !u!114 &681266934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29219,6 +29220,7 @@ MonoBehaviour:
   EndGameFailureUI: {fileID: 0}
   totalScore: 0
   highScore: 0
+  endedgame: 0
 --- !u!114 &2036072898
 MonoBehaviour:
   m_ObjectHideFlags: 0
