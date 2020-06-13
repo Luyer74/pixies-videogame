@@ -141,7 +141,7 @@ public class CookIngredient : MonoBehaviour
         if(WarningUI.activeSelf)
         {
             warningTimer += Time.deltaTime;
-            Debug.Log(warningTimer - warningStartTime);
+            //Debug.Log(warningTimer - warningStartTime);
             if(warningTimer - warningStartTime > 3)
             {
                 Debug.Log("Should deactivate");

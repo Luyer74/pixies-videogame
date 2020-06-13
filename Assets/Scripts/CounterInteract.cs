@@ -50,8 +50,8 @@ public class CounterInteract : MonoBehaviour
             spr = obj.GetComponentInChildren<SpriteRenderer>();
             if (available && player1.hasObject)
             {
-                spr.sortingOrder = 2;
-                obj.transform.SetParent(gameObject.transform, false); //cambiar posicion
+                obj.transform.SetParent(gameObject.transform, false);
+                spr.sortingOrder = 2;//cambiar posicion
                 isSliced = player1.isSliced;
                 clean = player1.clean;
                 isCooked = player1.isCooked;
@@ -65,7 +65,7 @@ public class CounterInteract : MonoBehaviour
             else if(!available && !player1.hasObject)
             {
                 obj.transform.SetParent(player.transform, false);
-                spr.sortingOrder = 3;
+                spr.sortingOrder = 3;//cambiar posicion
                 player1.ingrediente = obj;
                 player1.hasObject = true;
                 player1.isSliced = isSliced;

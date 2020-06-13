@@ -134,10 +134,13 @@ public class PlayerInteract : MonoBehaviour
         //espera 15 segundos y aparece un plato sucio
         yield return new WaitForSeconds(15);
         platosSucios = dirtyPlatesCounter.GetComponent<CounterInteract>();
+        while (!platosSucios.available) //si ya hay un plato, no insertar uno nuevo
+        {
+            yield return new WaitForSeconds(5);
+        }
         platosSucios.clean = false;
-        platosSucios.isSliced = false;
         platosSucios.available = false;
-        
+        platosSucios.isSliced = false; 
         newDirtyPlate = Instantiate(plato2, dirtyPlatesCounter.transform);
         newDirtyPlate.SetActive(true);
     }
