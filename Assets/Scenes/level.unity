@@ -9443,7 +9443,7 @@ MonoBehaviour:
   slider: {fileID: 0}
   minutes: 0
   seconds: 0
-  totalSeconds: 5
+  totalSeconds: 300
   endGame: 0
   successSound: {fileID: 8350089536685601861, guid: 25c22f9e448084a4bbfaa423bd39e25b,
     type: 3}
