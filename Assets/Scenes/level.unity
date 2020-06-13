@@ -18124,17 +18124,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 1779944393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.45, y: 1, z: 1}
-=======
   m_GameObject: {fileID: 1730220346}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.81, y: -7.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
->>>>>>> a8c3f7fa23847e50149f4ea933a09236f7f9653d
   m_Children:
   - {fileID: 562234236}
   m_Father: {fileID: 1584959335}
