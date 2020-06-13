@@ -19,6 +19,8 @@ public class CutIngredient : MonoBehaviour
     public float timer = 0f;
     public float holdTime = 5.0f; //tiempo requerido para "cortar"
     public bool held = false;
+    public GameObject sonidocortar;
+    GameObject clone;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -65,6 +67,7 @@ public class CutIngredient : MonoBehaviour
             {
                 if (Input.GetKeyDown(intkey))
                 {
+                    clone = Instantiate(sonidocortar);
                     moved = true;
                     ingrediente.transform.position = ingrediente.transform.position + new Vector3(1, 0);
 
@@ -90,6 +93,7 @@ public class CutIngredient : MonoBehaviour
 
             if (Input.GetKeyUp(intkey))
             {
+                Destroy(clone);
                 if (ingrediente && moved)
                 {
                     ingrediente.transform.position = ingrediente.transform.position + new Vector3(-1, 0);

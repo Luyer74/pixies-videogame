@@ -32,6 +32,8 @@ public class CookIngredient : MonoBehaviour
     public GameObject WarningUI;
     public float warningStartTime = 0f;
     public float warningTimer = 0f;
+    public GameObject SonidoCoc;
+    GameObject Clone;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -63,6 +65,7 @@ public class CookIngredient : MonoBehaviour
             warningActive = false;
             if (ingrediente.CompareTag("Ingredient") && ingredientCount < 3 && !finishedSoup)
             {
+                Clone = Instantiate(SonidoCoc);
                 if (!isCooking)
                 {
                     imagen.SetActive(true);
@@ -98,6 +101,7 @@ public class CookIngredient : MonoBehaviour
                 tomatos = 0;
                 onions = 0;
                 mushrooms = 0;
+                Destroy(Clone);
             }
         }
 
