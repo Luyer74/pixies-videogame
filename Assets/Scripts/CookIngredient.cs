@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +28,10 @@ public class CookIngredient : MonoBehaviour
     public bool soupExpired = false;
     public float expiredStartTime = 0f;
     public float expiredTimer = 0f;
+    public bool warningActive = false;
+    public GameObject WarningUI;
+    public float warningStartTime = 0f;
+    public float warningTimer = 0f;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -55,6 +60,7 @@ public class CookIngredient : MonoBehaviour
     {
         if (isInRange && ingrediente && Input.GetKeyDown(intkey))
         {
+            warningActive = false;
             if (ingrediente.CompareTag("Ingredient") && ingredientCount < 3 && !finishedSoup)
             {
                 if (!isCooking)
@@ -117,8 +123,25 @@ public class CookIngredient : MonoBehaviour
             expiredTimer += Time.deltaTime;
             if(expiredTimer - expiredStartTime > 10)
             {
-                Debug.Log("EXPIRED");
                 soupExpired = true;
+                if(!warningActive)
+                {
+                    warningActive = true;
+                    WarningUI.SetActive(true);
+                    warningStartTime = Time.time;
+                    warningTimer = warningStartTime;
+                }
+            }
+        }
+
+        if(WarningUI.activeSelf)
+        {
+            warningTimer += Time.deltaTime;
+            Debug.Log(warningTimer - warningStartTime);
+            if(warningTimer - warningStartTime > 3)
+            {
+                Debug.Log("Should deactivate");
+                WarningUI.SetActive(false);
             }
         }
     }
