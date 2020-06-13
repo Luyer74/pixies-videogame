@@ -13769,6 +13769,8 @@ MonoBehaviour:
   timer: 0
   holdTime: 3
   held: 0
+  SonidoLavar: {fileID: 3089010739353048698, guid: 3fa7c2ae288604ec28219156cc0437f4,
+    type: 3}
 --- !u!61 &1080820905
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13782,7 +13784,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.116974115, y: 0.21725321}
+  m_Offset: {x: 0.3423133, y: 0.21725321}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -13793,7 +13795,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0691075, y: 0.8970375}
+  m_Size: {x: 0.5364876, y: 0.8970375}
   m_EdgeRadius: 0
 --- !u!1 &1095267110
 GameObject:

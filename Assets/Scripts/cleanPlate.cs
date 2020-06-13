@@ -19,6 +19,8 @@ public class cleanPlate : MonoBehaviour
     public float timer = 0f;
     public float holdTime = 5.0f; //tiempo requerido para "cortar"
     public bool held = false;
+    public GameObject SonidoLavar;
+    GameObject clonel;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -64,10 +66,11 @@ public class cleanPlate : MonoBehaviour
          if (isInRange)
         {
             
-            if (plate && (plate.name == "DirtyPlate(Clone)" || !washStation.clean))
+            if (plate && plate.CompareTag("Plate") && !washStation.isCooked)
             {
                 if (Input.GetKeyDown(intkey))
                 {
+                    clonel = Instantiate(SonidoLavar);
                     moved = true;
                     plate.transform.position = plate.transform.position + new Vector3(0, 1);
 
@@ -95,6 +98,7 @@ public class cleanPlate : MonoBehaviour
             {
                 if (plate && moved)
                 {
+                    Destroy(clonel);
                     plate.transform.position = plate.transform.position + new Vector3(0, -1);
                     moved = false;
                 }
