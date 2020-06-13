@@ -60,6 +60,7 @@ public class CounterInteract : MonoBehaviour
                 player1.hasObject = false;
                 player1.isSliced = false;
                 player1.clean = false;
+                player1.isCooked = false;
             }
             else if(!available && !player1.hasObject)
             {

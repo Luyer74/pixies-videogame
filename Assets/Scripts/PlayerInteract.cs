@@ -27,6 +27,7 @@ public class PlayerInteract : MonoBehaviour
     public GameObject ingrediente;
     public GameObject newDirtyPlate;
     public GameObject dirtyPlatesCounter;
+    CounterInteract platosSucios;
     Score score;
 
     void Start()
@@ -111,6 +112,7 @@ public class PlayerInteract : MonoBehaviour
         Debug.Log("finished order");
         hasObject = false;
         isCooked = false;
+        clean = false;
         score.AddScore();
         StartCoroutine(FinishDirtyPlateCoroutine());
     }
@@ -131,6 +133,11 @@ public class PlayerInteract : MonoBehaviour
     {
         //espera 15 segundos y aparece un plato sucio
         yield return new WaitForSeconds(15);
+        platosSucios = dirtyPlatesCounter.GetComponent<CounterInteract>();
+        platosSucios.clean = false;
+        platosSucios.isSliced = false;
+        platosSucios.available = false;
+        
         newDirtyPlate = Instantiate(plato2, dirtyPlatesCounter.transform);
         newDirtyPlate.SetActive(true);
     }
